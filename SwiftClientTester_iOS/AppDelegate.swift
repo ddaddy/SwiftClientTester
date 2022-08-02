@@ -1,22 +1,20 @@
 //
-//  SwiftClientTesterApp.swift
-//  SwiftClientTester
+//  AppDelegate.swift
+//  SwiftClientTester_iOS
 //
-//  Created by Daniel Jilg on 22.06.21.
+//  Created by Darren Jones on 02/08/2022.
 //
 
-import SwiftUI
+import UIKit
 import TelemetryClient
 
 @main
-struct SwiftClientTesterApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    init() {
+    var window: UIWindow?
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         let YOUR_APP_ID = "44e0f59a-60a2-4d4a-bf27-1f96ccb4aaa3"
         let configuration = TelemetryManagerConfiguration(appID: YOUR_APP_ID)
         configuration.showDebugLogs = true
@@ -25,6 +23,8 @@ struct SwiftClientTesterApp: App {
         TelemetryManager.initialize(with: configuration)
         
         TelemetryManager.send("applicationDidFinishLaunching")
+        
+        return true
     }
 }
 
